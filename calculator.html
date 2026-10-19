@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GRADE CALCULATOR</title>
+  <style>
+    {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f7f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .calculator-container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333333;
+      margin-top: 0;
+      margin-bottom: 24px;
+      font-size: 24px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="number"]:focus {
+      border-color: #4a90e2;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #357abd;
+    }
+
+    #result {
+      margin-top: 24px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333333;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator-container">
+    <h2>Grade Calculator</h2>
+    <input type="number" placeholder="Enter mark 1" id="mark1">
+    <input type="number" placeholder="Enter mark 2" id="mark2">
+    <input type="number" placeholder="Enter mark 3" id="mark3">
+    <input type="number" placeholder="Enter mark 4" id="mark4">
+    <input type="number" placeholder="Enter mark 5" id="mark5">
+    
+    <button onclick="grade()">Calculate Grade</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function grade() {
+      let m1 = Number(document.getElementById("mark1").value);
+      let m2 = Number(document.getElementById("mark2").value);
+      let m3 = Number(document.getElementById("mark3").value);
+      let m4 = Number(document.getElementById("mark4").value);
+      let m5 = Number(document.getElementById("mark5").value);
+      
+      let total = m1 + m2 + m3 + m4 + m5;
+      let average = total / 5;
+      let status = "";
+      
+      if (average >= 50) {
+        status = "<span style='color: #2e7d32;'>Passed</span>";
+      } else {
+        status = "<span style='color: #c62828;'>Failed</span>";
+      }
+      
+      document.getElementById("result").innerHTML = 
+        "Total: <strong>" + total + "</strong><br>" + 
+        "Average: <strong>" + average.toFixed(1) + "%</strong><br>" + 
+        "Status: " + status;
+    }
+  </script>
+</body>
+</html>
